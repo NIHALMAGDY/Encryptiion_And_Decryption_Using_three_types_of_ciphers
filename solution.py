@@ -106,38 +106,44 @@ if sys.argv[1] == "affine" :
 if sys.argv[1] == "vigenere" :
     S = ""
     if sys.argv[2] == "enc" :
-                a = sys.argv[5]
-                y = ""
-                Text = Text.strip().lower()
-                a = a.lower()
-                
-                for i in Text :
-                    a += a
-                    
-                for i in range( len(Text) ) : 
-                    if Text[i] == " " :
-                        y += " "
-                    else :
-                        y += alphabet[ ( alphabet.index( Text[i] ) + alphabet.index( a[i] ) ) % 26 ] 
-                
-                OutputFile(y)
+                key = sys.argv[5]
+                s2 = ""
+                s3 = ""
+                k = len(key)
+                for i in range (0, len(Text)):
+                    s3 += key[i%k]
+
+                for i in range(0, len(Text)):
+                    if Text[i].isalpha() and Text[i].isupper():
+                       x  = chr(((ord(Text[i]) + ord(s3[i]) - 2 * ord('A')) % 26)+ord('A'))
+                       s2+=x
+                    elif s[i].isalpha() and s[i].islower():
+                        x= chr(((ord(Text[i]) + ord(s3[i]) - 2 * ord('a')) % 26) + ord('a'))
+                        s2+= x
+                    else:
+                        s2+=Text[i]
+                OutputFile(s2)
                 OutputFile.close()
     elif sys.argv[2] == "dec" :
-                a = sys.argv[5]
-                y = ""
-                Text = Text.strip().lower()
-                a = a.lower()
-                
-                for i in Text :
-                    a += a
-                    
-                for i in range( len(Text) ) : 
-                    if x[i] == " " :
-                        y += " "
-                    else :
-                        y += alphabet[ ( alphabet.index( Text[i] ) - alphabet.index( a[i] ) ) % 26 ] 
-                
-                OutputFile(y)
+    S = ""
+    if sys.argv[2] == "enc" :
+                key = sys.argv[5]
+                s2 = ""
+                s3 = ""
+                k = len(key)
+                for i in range (0, len(Text)):
+                    s3 += key[i%k]
+
+                for i in range(0, len(Text)):
+                    if Text[i].isalpha() and Text[i].isupper():
+                       x  = chr(((ord(Text[i]) - ord(s3[i]) - 2 * ord('A') + 78) % 26)+ord('A'))
+                       s2+=x
+                    elif s[i].isalpha() and s[i].islower():
+                        x= chr(((ord(Text[i]) - ord(s3[i]) - 2 * ord('a') + 78) % 26) + ord('a'))
+                        s2+= x
+                    else:
+                        s2+=Text[i]
+                OutputFile(s2)
                 OutputFile.close()
                 
 InputFile.close()
