@@ -111,11 +111,11 @@ if sys.argv[1] == "vigenere" :
                 Text = Text.strip().lower()
                 a = a.lower()
                 
-                for i in x :
+                for i in Text :
                     a += a
                     
                 for i in range( len(Text) ) : 
-                    if x[i] == " " :
+                    if Text[i] == " " :
                         y += " "
                     else :
                         y += alphabet[ ( alphabet.index( Text[i] ) + alphabet.index( a[i] ) ) % 26 ] 
@@ -128,10 +128,10 @@ if sys.argv[1] == "vigenere" :
                 Text = Text.strip().lower()
                 a = a.lower()
                 
-                for i in x :
+                for i in Text :
                     a += a
                     
-                for i in range( len(x) ) : 
+                for i in range( len(Text) ) : 
                     if x[i] == " " :
                         y += " "
                     else :
