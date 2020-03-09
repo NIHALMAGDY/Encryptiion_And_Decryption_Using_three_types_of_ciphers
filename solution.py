@@ -21,54 +21,8 @@ def generateKey(string, key):
 
     return ("".join(key))
 
-def caesar_encrypt(text, s):
-    result = ""
+alphabet = 'abcdefghigklmnopqrstuvwxyz'
 
-    for i in range(len(text)):
-        char = text[i]
-
-        if char.isupper() and char.isalpha():
-            result += chr((ord(char) + s - 65) % 26 + 65)
-        elif char.islower() and char.isalpha():
-            result += chr((ord(char) + s - 97) % 26 + 97)
-        elif char == ' ':
-            result += ' '
-        else:
-            result += char
-
-    return result
-
-def caesar_decrypt(text, s):
-    result = ""
-
-    for i in range(len(text)):
-        char = text[i]
-
-        if char.isupper() and char.isalpha():
-            result += chr((ord(char) + 65 - s) % 26 + 65)
-        elif char.islower() and char.isalpha():
-            char = char.upper()
-            char = chr((ord(char) + 65 - s) % 26 + 65)
-            char = char.lower()
-            result += char
-        elif char == ' ':
-            result += ' '
-        else:
-            result += char
-
-    return result
-
-def computeGCD(x, y): 
-  
-    if x > y: 
-        small = y 
-    else: 
-        small = x 
-    for i in range(1, small+1): 
-        if((x % i == 0) and (y % i == 0)): 
-            gcd = i 
-              
-    return gcd 
 
 
 if sys.argv[1] == "shift" :
@@ -153,13 +107,40 @@ if sys.argv[1] == "vigenere" :
     S = ""
     if sys.argv[2] == "enc" :
                 a = sys.argv[5]
-                key = generateKey(Text, a)
-                OutputFile(caesar_encrypt(Text, key))
+                y = ""
+                Text = Text.strip().lower()
+                a = a.lower()
+                
+                for i in x :
+                    a += a
+                    
+                for i in range( len(Text) ) : 
+                    if x[i] == " " :
+                        y += " "
+                    else :
+                        y += alphabet[ ( alphabet.index( Text[i] ) + alphabet.index( a[i] ) ) % 26 ] 
+                
+                OutputFile(y)
                 OutputFile.close()
     elif sys.argv[2] == "dec" :
                 a = sys.argv[5]
-                key = generateKey(Text, a)
-                OutputFile(caesar_decrypt(Text, key))
+                y = ""
+                Text = Text.strip().lower()
+                a = a.lower()
+                
+                for i in x :
+                    a += a
+                    
+                for i in range( len(x) ) : 
+                    if x[i] == " " :
+                        y += " "
+                    else :
+                        y += alphabet[ ( alphabet.index( Text[i] ) - alphabet.index( a[i] ) ) % 26 ] 
+                
+                OutputFile(y)
                 OutputFile.close()
                 
 InputFile.close()
+
+if __name__ == "__main__" :
+    main()
