@@ -125,8 +125,6 @@ if sys.argv[1] == "vigenere" :
                 OutputFile(s2)
                 OutputFile.close()
     elif sys.argv[2] == "dec" :
-    S = ""
-    if sys.argv[2] == "enc" :
                 key = sys.argv[5]
                 s2 = ""
                 s3 = ""
