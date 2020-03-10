@@ -1,6 +1,10 @@
+
 import sys
 from string import ascii_uppercase, ascii_lowercase
-from math import gcd
+def gcd(a,b):
+        if b == 0:
+            return a
+        return gcd(b, a%b)
 InputFile = open(sys.argv[3],"r")
 Text = InputFile.read()
 OutputFile = open(sys.argv[4],"w")
@@ -145,6 +149,3 @@ if sys.argv[1] == "vigenere" :
                 OutputFile.close()
                 
 InputFile.close()
-
-if __name__ == "__main__" :
-    main()
