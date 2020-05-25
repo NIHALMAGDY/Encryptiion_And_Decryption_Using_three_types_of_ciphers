@@ -1,4 +1,4 @@
-# Nihal-Magdy
+# Encryptiion_And_Decryption_Using_three_types_of_ciphers
 This file contains encryptiion and decryption methods like  shift, affine, and vigenere ciphers.
 The should be callable from command line as follows:
 ◦ First argument is the cipher type [“shift”,”affine”,”vigenere”].
