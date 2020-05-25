@@ -1,4 +1,4 @@
-# Encryptiion_And_Decryption_Using_three_types_of_ciphers
+# Encryptiion and decryption using three types of ciphers
 This file contains encryptiion and decryption methods like  shift, affine, and vigenere ciphers.
 
 The should be callable from command line as follows:
